@@ -3,9 +3,7 @@ var webpack=require('webpack')
 const UglifyJSPlugin=require('uglifyjs-webpack-plugin')
 module.exports={
     entry:{
-        vendor:[
-            'vue/dist/vue.esm.js'
-        ]
+        vendor:['vue']
     },
     optimization:{
         minimizer:[

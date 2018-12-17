@@ -5,7 +5,7 @@
 export default {
     data(){
         return {
-            text:'abcd'
+            text:'haru001'
         }
     },
     mounted(){
@@ -15,5 +15,6 @@ export default {
 <style lang='less'>
 #text{
     color:aqua;
+    background:red;
 }
 </style>

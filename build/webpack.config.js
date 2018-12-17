@@ -5,12 +5,13 @@ const HTMLPlugin=require('html-webpack-plugin')
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
 const MiniExtractPlugin=require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin=require('clean-webpack-plugin')
 const isDev=process.env.NODE_ENV==="production"
 const config={
     entry:path.join(__dirname,'../src/index.js'),
     output:{
         filename:'bundle.js',
-        path:path.join(__dirname,'dist'),
+        path:path.join(__dirname,'../dist'),
     },
     mode: isDev ? "production":"development",
     module:{
@@ -58,6 +59,13 @@ const config={
     },
     plugins:[
         new VueLoaderPlugin(),
+        new CleanWebpackPlugin(['dist'],{
+            root:path.resolve(__dirname,'../')
+        }),
+        new webpack.DllReferencePlugin({
+            context: path.resolve(__dirname, '../'),
+            manifest: require('./vendor-manifest.json')
+        }),
         new webpack.DefinePlugin({
             'process.env':{
                 NODE_ENV: isDev ? '"production"':'"development"'
@@ -80,7 +88,6 @@ const config={
     }
 }
 if(isDev){
-    // config.devtool="#cheap-module-eval-source-map"
     config.devServer={
         port:8080,
         host:'0.0.0.0',
