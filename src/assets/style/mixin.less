@@ -1,0 +1,86 @@
+.bis(@url) { 
+	background-image: url(@url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.borderRadius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+.Input(@width,@height,@border,@borderColor,@borderRadius,@fontSize,@padding){
+	width:@width;
+	height:@height;
+	border:@border solid @borderColor;
+	border-radius: @borderRadius;
+	font-size: @fontSize;
+	padding:0 @padding;
+	box-sizing: border-box;
+}
+.button(@width,@height,@bgColor,@borderRadius,@fontSize,@fontColor){
+	width:@width;
+	height:@height;
+	background: @bgColor;
+	border-radius:@borderRadius;
+	border:0;
+	outline: none;
+	line-height:@height;
+	font-size: @fontSize;
+	color:@fontColor;
+	
+}
+//定位全屏
+.allcover{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+//定位上下左右居中
+.center {  
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+.ct {  
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+//定位左右居中
+.cl {  
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+//宽高
+.wh(@width, @height){
+	width: @width;
+	height: @height;
+}
+
+//字体大小、行高、字体
+.font(@size, @line-height, @family: 'Microsoft YaHei') {  
+	font:@size,@line-height,@family;
+}
+
+//字体大小，颜色
+.sc(@size, @color){
+	font-size: @size;
+	color: @color;
+}
+
+//flex 布局和 子元素 对其方式
+.fj(@type: space-between){
+	display: flex;
+	justify-content: @type;
+
+}

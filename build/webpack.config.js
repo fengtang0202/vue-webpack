@@ -42,10 +42,16 @@ const config={
                     {
                         loader:'postcss-loader',
                         options:{
-                            sourceMap:true
+                            sourceMap:false
                         }
                     },
-                    'less-loader'
+                    {
+                        loader:'px2rem-loader',
+                        options:{
+                            remUnit: 37.5
+                        }
+                    },
+                    'less-loader',
                 ]
            },
            {
@@ -121,8 +127,7 @@ if(!isDev){
     config.plugins.push(...[new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo:{
             messages:[`在浏览器打开这个地址\n\http://${devConfig.host}:${devConfig.port}\n去吧可达鸭....`]
-        },
-        onErrors:'出错了哦....'
+        }
     })],new webpack.HotModuleReplacementPlugin())
 
 }

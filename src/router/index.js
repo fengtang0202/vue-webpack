@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HelloWorld from '../components/helloWorld'
 Vue.use(VueRouter)
 const routes=[
     {
         path:'/',
-        component:HelloWorld
+        component: () => import('../views/login.vue')
     }
 ]
 export default new VueRouter({
