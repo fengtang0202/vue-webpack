@@ -6,6 +6,7 @@
       <img src="../assets/images/1.png"/>
       <img src="../assets/images/4.png"/>
       <img src="../assets/images/5.png"/>
+      <div>webpack save</div>
     </div>
 </template> 
 <script>
