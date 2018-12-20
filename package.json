@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress  --config build/webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline  --progress --config build/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline  --progress --config  build/webpack.config.js",
     "dll": "webpack --progress --config build/webpack.dll.config.js"
   },
   "author": "",
@@ -45,6 +45,7 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "fastclick": "^1.0.6",
     "lib-flexible": "^0.3.2",

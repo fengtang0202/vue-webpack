@@ -11,10 +11,18 @@ const FriendlyErrorsWebpackPlugin=require('friendly-errors-webpack-plugin')
 const WebpackBundleAnalzyer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const isDev=process.env.NODE_ENV==="production"
 const config={
-    entry:path.join(__dirname,'../src/index.js'),
+    entry:[
+        path.join(__dirname,'../src/index.js')
+    ],
     output:{
         filename:'js/[name].[hash:7].js',
         path:path.join(__dirname,'../dist'),
+    },
+    externals: {
+        'vue': 'Vue',
+        'vue-router': 'VueRouter',
+        'vuex': 'Vuex',
+        'axios': 'axios'
     },
     mode: isDev ? "production":"development",
     module:{
@@ -89,7 +97,7 @@ const config={
         }),
         new HTMLPlugin({
             hash:true,
-            title:'华夏天空小说网'
+            template:'index.html'
         }),
         new AddAssetHtmlWebpackPlugin({
             filepath:path.resolve(__dirname,'../static/commonJS/*.dll.js'),
@@ -114,6 +122,7 @@ if(!isDev){
         port:8080,
         host:'127.0.0.1'
     }
+    config.devtool = 'cheap-module-eval-source-map'
     config.devServer={
         port:devConfig.port,
         host:devConfig.host,

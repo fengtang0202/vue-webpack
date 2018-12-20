@@ -1,8 +1,5 @@
 import types from './../types'
 import {Login} from '../../service/getData'
-// import md5 from 'js-md5';
-// import {Toast} from 'vant';
-
 const state = {
     isLogin:false,
     userInfo:{},
@@ -31,17 +28,17 @@ const mutations={
     }
 }
 const actions={
-//    async login({commit,state},userInfo){
-//         let data = await Login(userInfo.userName,md5(userInfo.password))
-//         if(data.returnCode==200){
-//             commit(types.CHANGE_ISLOGIN)
-//             commit(types.USER_TOKEN,data.data.token)
-//             commit(types.LOGIN,data.data)
-//             // Toast('登录成功~')
-//         }else{
-//             // Toast(data.msg)
-//         }
-//    }
+   async login({commit},userInfo){
+        let data = await Login(userInfo.userName,userInfo.password)
+        if(data.returnCode==200){
+            commit(types.CHANGE_ISLOGIN)
+            commit(types.USER_TOKEN,data.data.token)
+            commit(types.LOGIN,data.data)
+            console.log('登录成功')
+        }else{
+            console.log(data.msg)
+        }
+   }
 }
 export default{
     state,

@@ -5,6 +5,7 @@
     </div>
 </template>
 <script>
+import md5 from 'md5'
 export default {
     data(){
         return{
@@ -13,6 +14,9 @@ export default {
                 user:''
             }
         }
+    },
+  async  mounted(){
+        await console.log(11)
     }
 }
 </script>
