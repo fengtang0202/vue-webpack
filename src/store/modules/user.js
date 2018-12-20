@@ -29,7 +29,7 @@ const mutations={
 }
 const actions={
    async login({commit},userInfo){
-        let data = await Login(userInfo.userName,userInfo.password)
+        let data = await Login(userInfo.name,userInfo.pwd)
         if(data.returnCode==200){
             commit(types.CHANGE_ISLOGIN)
             commit(types.USER_TOKEN,data.data.token)

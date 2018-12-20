@@ -2,7 +2,7 @@
 import App from './App.vue'
 import router from './router'
 import FastClick from 'fastclick'
-import stroe from './store'
+import store from './store'
 import 'lib-flexible'
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function () {
@@ -13,6 +13,6 @@ const root=document.createElement('div')
 document.body.appendChild(root)
 new Vue({
     router,
-    stroe,
+    store,
     render:(h)=>h(App)
 }).$mount(root)

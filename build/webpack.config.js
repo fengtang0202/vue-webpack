@@ -93,7 +93,7 @@ const config={
         }),
         new MiniExtractPlugin({
             filename: isDev ? 'css/[name].[contenthash:7].css' : '[name].css',
-            chunkFilename: isDev ? '[id].[hash].css' : '[id].css'
+            chunkFilename: isDev ? 'css/[name].[contenthash:7].css' : '[id].css'
         }),
         new HTMLPlugin({
             hash:true,
@@ -137,7 +137,10 @@ if(!isDev){
         compilationSuccessInfo:{
             messages:[`在浏览器打开这个地址\n\http://${devConfig.host}:${devConfig.port}\n去吧可达鸭....`]
         }
-    })],new webpack.HotModuleReplacementPlugin())
+    }),new webpack.HotModuleReplacementPlugin(), 
+        new webpack.NamedModulesPlugin(), 
+        new webpack.NoEmitOnErrorsPlugin()
+    ])
 
 }
 if(isDev){ 

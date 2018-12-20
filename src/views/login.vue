@@ -1,22 +1,33 @@
 <template>
     <div>
-        <input type="text"  v-model="user.name" class='tInput'/>
-        <input type="text"  v-model="user.pwd" class='tInput'>
+        <input type="text"  v-model="name" class='tInput'/>
+        <input type="text"  v-model="pwd" class='tInput'>
+        <button @click="login(userInfo)" class='submit'>登录</button>
     </div>
 </template>
 <script>
 import md5 from 'md5'
+import {mapActions} from 'vuex'
 export default {
     data(){
         return{
-            user:{
-                name:'',
-                user:''
+                name:'1',
+                pwd:'221'
+        }
+    },
+    computed:{
+        userInfo(){
+            return {
+                name:this.name,
+                pwd:md5(this.pwd)
             }
         }
     },
-  async  mounted(){
-        await console.log(11)
+    methods:{
+        ...mapActions(['login'])
+    },
+    mounted(){
+        console.log()
     }
 }
 </script>
@@ -26,5 +37,14 @@ export default {
        width:200px;
        height:48px;
        font-size:26px;
+   }
+   .submit{
+       width:80px;
+       height:40px;
+       border:0;
+       outline:none;
+       background:red;
+       color:#fff;
+       font-size: 28px;
    }
 </style>
