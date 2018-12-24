@@ -4,7 +4,7 @@ const UglifyJSPlugin=require('uglifyjs-webpack-plugin')
 const cleanWebpackPlugin=require('clean-webpack-plugin')
 module.exports={
     entry:{
-        vendor: ['fastclick', 'vuex-persistedstate', 'lib-flexible']
+        vendor: ['fastclick', 'vuex-persistedstate', 'lib-flexible','md5']
     },
     optimization:{
         minimizer:[
