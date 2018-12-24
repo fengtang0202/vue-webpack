@@ -11,8 +11,8 @@ import {mapActions} from 'vuex'
 export default {
     data(){
         return{
-                name:'1',
-                pwd:'221'
+            name:'1',
+            pwd:'221'
         }
     },
     computed:{
