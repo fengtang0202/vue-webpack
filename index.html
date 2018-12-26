@@ -7,6 +7,10 @@
         body{margin: 0;padding: 0;}
         *{ touch-action: none;}
     </style>
+    <script>
+    // 兼容IPad
+    /(iPhone|iPad|iPhoneOS|Phone|iPod|iOS)/i.test(navigator.userAgent)&&(head=document.getElementsByTagName('head'),viewport=document.createElement('meta'),viewport.name='viewport',viewport.content='target-densitydpi=device-dpi,width=480px,user-scalable=no',head.length>0&&head[head.length-1].appendChild(viewport));
+    </script>
     <script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-rc.4/polyfill.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>

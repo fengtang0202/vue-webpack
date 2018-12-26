@@ -2,32 +2,38 @@
     <div>
         <input type="text"  v-model="name" class='tInput'/>
         <input type="text"  v-model="pwd" class='tInput'>
-        <button @click="login(userInfo)" class='submit'>登录</button>
+        <button @click="login(loginInfo)" class='submit'>登录</button>
     </div>
 </template>
 <script>
 import md5 from 'md5'
-import {mapActions} from 'vuex'
+import {mapActions,mapGetters} from 'vuex'
 export default {
-    data(){
+    data () {
         return{
-            name:'1',
-            pwd:'221'
+            name:'小样',
+            pwd:'tangfeng22'
         }
     },
     computed:{
-        userInfo(){
+        ...mapGetters(['isLogin','userInfo']),
+        loginInfo(){
             return {
                 name:this.name,
                 pwd:md5(this.pwd)
             }
         }
     },
-    methods:{
-        ...mapActions(['login'])
+    watch:{
+        isLogin(){
+            this.isLogin&&this.$router.push('/')
+        }
     },
-    mounted(){
-        console.log()
+    methods:{
+        ...mapActions(['login']),
+    },
+   async mounted(){
+        console.log(this.isLogin,this.userInfo)
     }
 }
 </script>

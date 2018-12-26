@@ -92,8 +92,8 @@ const config={
             }
         }),
         new MiniExtractPlugin({
-            filename: isDev ? 'css/[name].[contenthash:7].css' : '[name].css',
-            chunkFilename: isDev ? 'css/[name].[contenthash:7].css' : '[id].css'
+            filename: 'css/[name].[contenthash:7].css',
+            chunkFilename:'css/[name].[contenthash:7].css' 
         }),
         new HTMLPlugin({
             hash:true,
@@ -120,7 +120,7 @@ const config={
 if(!isDev){
     const devConfig={
         port:8080,
-        host:'127.0.0.1'
+        host:'0.0.0.0'
     }
     config.devtool = 'cheap-module-eval-source-map'
     config.devServer={
@@ -141,7 +141,6 @@ if(!isDev){
         new webpack.NamedModulesPlugin(), 
         new webpack.NoEmitOnErrorsPlugin()
     ])
-
 }
 if(isDev){ 
     config.plugins.push(
