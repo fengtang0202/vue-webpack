@@ -1,15 +1,17 @@
 <template>
-    <wc-swiper  v-if="list.length" @transitionend="transitionend" ref="swiper"
+<div>    
+  <wc-swiper  v-if="list.length" @transitionend="transitionend" ref="swiper"
       :defaultSlide="0" :interval="2000" :pagination="true" :vLock="true">
         <wc-slide v-for="(v, k) in list" @click='handleGo(v.bookId)' :key="k">
           <img :src="v.activityImgURL" style='height:4rem;width:100%'/>
         </wc-slide>
-    </wc-swiper> 
+    </wc-swiper>
+</div>
 </template>
 <script>
 import {homeInfo} from '../service/getData'
-const wcSwiper=()=>import('../components/wcSwiper.vue')
-const wcSlide=()=>import('../components/wcSlide.vue')
+import wcSwiper  from '../components/wcSwiper.vue'
+import wcSlide from '../components/wcSlide.vue'
   export default {
     components:{
         wcSwiper,
