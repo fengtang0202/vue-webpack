@@ -9,6 +9,7 @@ const CleanWebpackPlugin=require('clean-webpack-plugin')
 const AddAssetHtmlWebpackPlugin=require('add-asset-html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin=require('friendly-errors-webpack-plugin')
 const WebpackBundleAnalzyer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin=require('compression-webpack-plugin')
 const isDev=process.env.NODE_ENV==="production"
 const config={
     entry:[
@@ -34,7 +35,7 @@ const config={
            },
            {
                 test:/\.js$/,
-                exclude: __dirname+'node_modules',
+                exclude: /node_modules/,
                 loader:'babel-loader'
            },
            {
@@ -137,16 +138,24 @@ if(!isDev){
         compilationSuccessInfo:{
             messages:[`在浏览器打开这个地址\n\http://${devConfig.host}:${devConfig.port}\n去吧可达鸭....`]
         }
-    }),new webpack.HotModuleReplacementPlugin(), 
+    }) ,new webpack.HotModuleReplacementPlugin(), 
         new webpack.NamedModulesPlugin(), 
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
     ])
 }
 if(isDev){ 
     config.plugins.push(
          ...[new CleanWebpackPlugin(['dist'], {
              root: path.resolve(__dirname, '../')
-        }), new WebpackBundleAnalzyer()]
+        }), new WebpackBundleAnalzyer(),
+            new CompressionPlugin({
+                filename: '[path].gz',
+                algorithm: 'gzip',
+                test: new RegExp('\\.(js|css)$'),
+                threshold: 10240,
+                minRatio: 0.8
+            })
+    ]
     )
     config.module.rules[4].use.push({loader:'image-webpack-loader'})
 }

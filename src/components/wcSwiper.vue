@@ -346,6 +346,7 @@
 .wc-swiper-container {
   position: relative;
   width: 100%;
+  overflow: hidden;
 }
 .wc-default-swiper-box {
   height: 100%;
