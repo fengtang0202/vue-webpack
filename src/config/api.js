@@ -1,4 +1,4 @@
-const LOGIN = '/api/person-login'
+const LOGIN = '/api/userLogin'
 const HomePageInfo = '/api/hot/homePageRecommended'
 module.exports={
     LOGIN,

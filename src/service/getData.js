@@ -4,6 +4,5 @@ export const Login = (userName,pwd)=>{
     return post(`${api.LOGIN}?userName=${userName}&userPassword=${pwd}&terminal=3`
 )
 }
-export const homeInfo=fetch(api.HomePageInfo)
 
 

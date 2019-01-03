@@ -9,5 +9,5 @@ const routes=[
     }
 ]
 export default new VueRouter({
-    routes:routes
+    routes:routes,
 })

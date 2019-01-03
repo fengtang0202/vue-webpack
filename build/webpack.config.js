@@ -132,7 +132,16 @@ if(!isDev){
         compress: true,
         hot:true,
         quiet: true,
-        open: true
+        open: true,
+         proxy: {
+             "/api": {
+                 target: 'http://192.168.0.136:9526/api',
+                 pathRewrite: {
+                     '^/api': ''
+                 },
+                 changeOrigin: true
+             }
+         },
     }
     config.plugins.push(...[new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo:{

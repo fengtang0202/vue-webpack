@@ -6,13 +6,14 @@
     </div>
 </template>
 <script>
-import md5 from 'md5'
+// import md5 from 'md5'
+import Aes from '../config/util'
 import {mapActions,mapGetters} from 'vuex'
 export default {
     data () {
         return{
-            name:'小样',
-            pwd:'tangfeng22'
+            name:'15925655884',
+            pwd:123456
         }
     },
     computed:{
@@ -20,7 +21,7 @@ export default {
         loginInfo(){
             return {
                 name:this.name,
-                pwd:md5(this.pwd)
+                pwd:this.pwd
             }
         }
     },
@@ -33,11 +34,11 @@ export default {
         ...mapActions(['login']),
         async  userLogin(){
             let message=await this.login(this.loginInfo)
-            this.$toast('登录成功!')
+            // this.$toast('登录成功!')
         }
     },
     async mounted () {
-        console.log(this.isLogin,this.userInfo)
+        
     }
 }
 </script>

@@ -9,7 +9,7 @@
 </div>
 </template>
 <script>
-import {homeInfo} from '../service/getData'
+// import {homeInfo} from '../service/getData'
 import wcSwiper  from '../components/Swiper/wcSwiper.vue'
 import wcSlide from '../components/Swiper/wcSlide.vue'
   export default {
@@ -32,8 +32,8 @@ import wcSlide from '../components/Swiper/wcSlide.vue'
         }
     },
     async mounted () {
-        let homeInfos = await homeInfo
-        this.list = homeInfos.data.pictureCarouselVersionTow
+        // let homeInfos = await homeInfo
+        // this.list = homeInfos.data.pictureCarouselVersionTow
     },
   }
 </script>
