@@ -2,7 +2,7 @@
     <div>
         <input type="text"  v-model="name" class='tInput'/>
         <input type="text"  v-model="pwd" class='tInput'>
-        <button @click="login(loginInfo)" class='submit'>登录</button>
+        <button @click="userLogin()" class='submit'>登录</button>
     </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
         }
     },
     computed:{
-        ...mapGetters(['isLogin','userInfo']),
+        ...mapGetters(['isLogin']),
         loginInfo(){
             return {
                 name:this.name,
@@ -31,8 +31,12 @@ export default {
     },
     methods:{
         ...mapActions(['login']),
+        async  userLogin(){
+            let message=await this.login(this.loginInfo)
+            this.$toast('登录成功!')
+        }
     },
-   async mounted(){
+    async mounted () {
         console.log(this.isLogin,this.userInfo)
     }
 }
