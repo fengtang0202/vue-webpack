@@ -121,7 +121,8 @@ const config={
 if(!isDev){
     const devConfig={
         port:8080,
-        host:'0.0.0.0'
+        host:'0.0.0.0',
+        proxyTarget:'http://192.168.0.136:9526/api'
     }
     config.devtool = 'cheap-module-eval-source-map'
     config.devServer={
@@ -133,19 +134,22 @@ if(!isDev){
         hot:true,
         quiet: true,
         open: true,
-         proxy: {
+        proxy: {
              "/api": {
-                 target: 'http://192.168.0.136:9526/api',
+                 target: devConfig.proxyTarget,
                  pathRewrite: {
                      '^/api': ''
                  },
                  changeOrigin: true
              }
-         },
+        },
+        historyApiFallback: {
+            index: path.join(__dirname,'../index.html')
+        }
     }
     config.plugins.push(...[new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo:{
-            messages:[`在浏览器打开这个地址\n\http://${devConfig.host}:${devConfig.port}\n去吧可达鸭....`]
+            messages: [`proxy ${devConfig.proxyTarget}\n在浏览器打开这个地址\n\http://${devConfig.host}:${devConfig.port}\n去吧可达鸭....`]
         }
     }) ,new webpack.HotModuleReplacementPlugin(), 
         new webpack.NamedModulesPlugin(), 
